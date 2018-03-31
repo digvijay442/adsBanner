@@ -1,0 +1,13 @@
+[
+    { "mobileBrowser" : "Chrome", "select" : true },
+    { "mobileBrowser" : "Android browser", "select" : true },
+    { "mobileBrowser" : "Opera", "select" : true },
+    { "mobileBrowser" : "Dolphin", "select" : true },
+    { "mobileBrowser" : "Firefox", "select" : true },
+    { "mobileBrowser" : "UCBrowser", "select" : true },
+    { "mobileBrowser" : "Puffin", "select" : true },
+    { "mobileBrowser" : "Safari", "select" : true },
+    { "mobileBrowser" : "Edge", "select" : true },
+    { "mobileBrowser" : "IE", "select" : true },
+    { "mobileBrowser" : "Other mobile browsers", "select" : true }
+]

@@ -1,0 +1,33 @@
+<div class="text-center">
+  <button class="btn btn-success" data-toggle="modal" data-target="#myModal">
+    <i class="fa fa-plus"></i> Add Campaign
+  </button>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header header-success">
+        <h4 class="modal-title"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add campaign</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <!-- <input  id="_camp_name" type="text" class="form-control" placeholder="Campaign name" focuse (keyup)="onCampInput($event)" [(ngModel)]="newCampInput"> -->
+      <input  id="_camp_name" type="text" class="form-control" placeholder="Campaign name" (keyup)="onCampInput($event)" [(ngModel)]="newCampInput">
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+          <button type="button" class="btn" data-dismiss="modal">Close</button>
+          
+            <button type="button" class="btn btn-info" data-dismiss="modal" [disabled]="createCampBtn" (click)="campView()">
+              <i class="fa fa-check"></i> Create
+            </button> 
+      </div>
+    </div>
+  </div>
+</div>

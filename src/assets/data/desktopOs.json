@@ -1,0 +1,13 @@
+[
+    { "desktopOs" : "Windows 10", "select" : true },
+    { "desktopOs" : "Windows 8.1", "select" : true },
+    { "desktopOs" : "Windows 8", "select" : true },
+    { "desktopOs" : "Windows 7", "select" : true },
+    { "desktopOs" : "Windows Vista", "select" : true },
+    { "desktopOs" : "Windows XP", "select" : true },
+    { "desktopOs" : "Mac OS", "select" : true },
+    { "desktopOs" : "Ubuntu", "select" : true },
+    { "desktopOs" : "Linux", "select" : true },
+    { "desktopOs" : "Other desktop OS", "select" : true }
+
+]

@@ -1,0 +1,131 @@
+<br>
+<div class="card">
+  <h6 class="card-header">Campaign Settings</h6>
+  <br>
+
+  <div>
+    <form>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <label for="" class="col-md-3 col-form-label"> Campaign name:</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control " name="campName" [(ngModel)]="message">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row form-group">
+            <label for="" class="col-md-3 col-form-label"> Geo targeting:</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control " name="geoTarget">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <label for="" class="col-md-3 col-form-label">Size:</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control " name="size" placeholder="Enter file size">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row form-group">
+            <label for="" class="col-md-3 col-form-label">Device targeting:</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control " name="deiveTarget">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <label for="" class="col-md-3 col-form-label">Active hours:</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control " name="activeHrs">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row form-group">
+            <label for="" class="col-md-3 col-form-label">OS targeting:</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control " name="OsTarget">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <label for="" class="col-md-3 col-form-label">Campaign start date:</label>
+            <div class="col-md-9">
+              <input type="date" class="form-control " name="campStartDate">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row form-group">
+            <label for="" class="col-md-3 col-form-label">Browser targeting:</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control " name="browserTarget">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <label for="" class="col-md-3 col-form-label">Campaign stop date:</label>
+            <div class="col-md-9">
+              <input type="date" class="form-control " name="campStopDate">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row form-group">
+            <label for="" class="col-md-3 col-form-label">Campaign link:</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control " name="browserTarget">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- To NOT show the campaign at the following sites: -->
+
+      <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <label for="" class="col-md-3 col-form-label">To NOT show the campaign at the following sites:</label>
+              <div class="col-md-9">
+                <input type="text" class="form-control " name="campStopDate">
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-md-6">
+            <div class="row form-group">
+              <label for="" class="col-md-3 col-form-label">Campaign link:</label>
+              <div class="col-md-9">
+                <input type="text" class="form-control " name="browserTarget">
+              </div>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="card-footer text-center">
+          <button class="btn btn-danger pull-left"> <i class="fa fa-trash-o"></i> Remove campaign</button>
+          <button class="btn btn-success"> Banner</button>
+          <button class="btn btn-success pull-right"> <i class="fa fa-check"></i> Save campaign</button>
+        </div>
+    </form>
+  </div>
+</div>

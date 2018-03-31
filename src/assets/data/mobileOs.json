@@ -1,0 +1,9 @@
+[
+    { "mobileOs" : "iOS", "select" : true },
+    { "mobileOs" : "Android", "select" : true },
+    { "mobileOs" : "Windows Phone", "select" : true },
+    { "mobileOs" : "Symbian", "select" : true },
+    { "mobileOs" : "Black Berry", "select" : true },
+    { "mobileOs" : "Windows Mobile", "select" : true },
+    { "mobileOs" : "Other mobile OS", "select" : true }
+]

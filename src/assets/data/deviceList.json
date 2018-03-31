@@ -1,0 +1,5 @@
+[
+	{ "device":  "Computer", "select": true },
+	{ "device": "Tablet", "select" : true },
+	{ "device": "Mobile", "select" : true }
+]

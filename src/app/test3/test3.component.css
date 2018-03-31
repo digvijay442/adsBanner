@@ -1,0 +1,12 @@
+ul {
+    list-style: none;
+}
+
+li:hover {
+cursor: pointer;
+}
+
+h6{
+    background-color: #bcc6d0;
+    padding: 10px;
+}
