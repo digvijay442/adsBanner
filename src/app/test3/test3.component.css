@@ -16,10 +16,19 @@ h6{
 }
 .multiSelectContainer > button {
     width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #333;
+    padding: 6px 0;
+    border-radius: 4px;
 }
 
-.multiSelectChildContainer {
+.multiSelectContainer > div ul{
     position: absolute;
     z-index: 1;
-    border: 1px solid black;
+    background-color: #fff;
+    left: 0;
+    border: 1px solid #efefef;
 }

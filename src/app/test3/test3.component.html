@@ -15,8 +15,8 @@
         <div class="row form-group">
           <label for="" class="col-md-3 col-form-label"> Geo targeting:</label>
           <div class="col-md-9 multiSelectContainer">
-            <button class="btn" (click)="openCountryListBtnClick()">{{(selectedCountries.length) ? selectedCountries.length + " Selected" : "Nothig Selected"}}</button>
-            <div *ngIf="openCountryList" class="multiSelectChildContainer">
+            <button (click)="openCountryListBtnClick()">{{(selectedCountries.length) ? selectedCountries.length + " Selected" : "Nothig Selected"}}</button>
+            <div *ngIf="openCountryList" class="col-12">
               <ul>
                 <li *ngFor="let country of countries;index as i" (click)="addCountryCheckMark(i)">
                   <strong>{{i}}</strong> {{country.country + ' ind ' + country.select}}
