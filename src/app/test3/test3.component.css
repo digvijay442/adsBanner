@@ -7,6 +7,19 @@ cursor: pointer;
 }
 
 h6{
-    background-color: #bcc6d0;
+    background-color: #9e9e9e33;
     padding: 10px;
+}
+
+.multiSelectContainer {
+    position: relative;
+}
+.multiSelectContainer > button {
+    width: 100%;
+}
+
+.multiSelectChildContainer {
+    position: absolute;
+    z-index: 1;
+    border: 1px solid black;
 }
