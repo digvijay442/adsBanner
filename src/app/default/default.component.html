@@ -2,7 +2,7 @@
   default works!
 </p>
 
-<select (change)="selectChange($event)" multiple style="font-family: FontAwesome, Arial; text-align:right;">
+<!-- <select (change)="selectChange($event)" multiple style="font-family: FontAwesome, Arial; text-align:right;">
   <option *ngFor="let hour of activeHours" [selected]="isSelected" [value]="hour">{{hour}} {{isSelected === true ? "&#xf00c;": ""}} </option>
 </select>
 
@@ -12,6 +12,5 @@
 <button (click)="selectAll($event)">select All</button>
 <button (click)="deSelectAll($event)">Deselect All</button>
 
-{{ (selectedValue.length > 0) ? selectedValue.length + " Selected" : "nothing selected"}}
-<!-- {{ (selectedValue.length) ? "selectedValue is true" : "selectedValue is false" }} -->
+{{ (selectedValue.length > 0) ? selectedValue.length + " Selected" : "nothing selected"}} -->
 

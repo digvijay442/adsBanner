@@ -16,8 +16,8 @@ export class DataService {
 
   private campTitle = new BehaviorSubject<string>("Default Title");
   currentCampTitle = this.campTitle.asObservable();
-  private _urlActiveHours : string = "assets/data/getActiveHours.json";
-  private _urlDummyHours : string = "assets/data/getActiveHours.1.json";
+  private _urlActiveHours : string = "assets/data/activeHoursList.json";
+  // private _urlDummyHours : string = "assets/data/getActiveHours.1.json";
   private _urlDeviceLIst : string = "assets/data/deviceList.json";
   private _urlCountryLIst : string = "assets/data/geoList.json";
   private _urlMobileOsLIst : string = "assets/data/mobileOs.json";
@@ -36,9 +36,9 @@ export class DataService {
     return this.http.get<IActiveHours[]>(this._urlActiveHours);
   }
 
-  getDummyHours(): Observable<IDummyActiveHours[]>{
-    return this.http.get<IDummyActiveHours[]>(this._urlDummyHours);
-  }
+  // getDummyHours(): Observable<IDummyActiveHours[]>{
+  //   return this.http.get<IDummyActiveHours[]>(this._urlDummyHours);
+  // }
 
   getDeviceList(): Observable<IDevice[]>{
     return this.http.get<IDevice[]>(this._urlDeviceLIst);

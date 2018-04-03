@@ -7,6 +7,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./test3.component.css']
 })
 export class Test3Component implements OnInit {
+  campTitle: String;
   hours = [];
   selectedHours = [];
   openHrsList: boolean = false;
@@ -19,56 +20,84 @@ export class Test3Component implements OnInit {
   selectedCountries = [];
   openCountryList: boolean = false;
 
-  osList = [];
-  selectedOs = [];
+  osListDesktop = [];
+  selectedOsDesktop = [];
   openOsList: boolean = false;
+  osListMobile = [];
+  selectedOsMobile = [];
+
+  browserListDesktop = [];
+  selectedBrowserDesktop = [];
+  openBrowserList: boolean = false;
+  browserListMobile = [];
+  selectedBrowserMobile = [];
 
 
   constructor(private _data: DataService) {
   }
 
   ngOnInit() {
-    // this.data.getHours().subscribe(hrs => this.hours = hrs);
-    this._data.getDummyHours().subscribe(hrs => this.hours = hrs);
-    setTimeout(() => {
-      for (let i = 0; i < this.hours.length; i++)
+    // get campTitle from dataService
+    this._data.currentCampTitle.subscribe(title => this.campTitle = title);
+
+    // Get Active Hours
+    this._data.getHours().subscribe(hrs => {
+      this.hours = hrs;
+      for (let i = 0; i < this.hours.length; i++){
         this.selectedHours.push(this.hours[i].hr);
-    }, 1);
+      }
+    });
 
     // Get devices list
-    this._data.getDeviceList().subscribe(data => this.devices = data);
-    setTimeout(() => {
-      for (let i = 0; i < this.devices.length; i++)
+    this._data.getDeviceList().subscribe(data => {
+      this.devices = data;
+      for (let i = 0; i < this.devices.length; i++) {
         this.selectedDevices.push(this.devices[i].device);
-    }, 1);
+      }
+    });
 
     // Get Country list
-    this._data.getCountryList().subscribe(data => this.countries = data);
-    setTimeout(() => {
+    this._data.getCountryList().subscribe(data => {
+      this.countries = data;
       for (let i = 0; i < this.countries.length; i++) {
         this.selectedCountries.push(this.countries[i].country);
       }
-    }, 1);
+    });
 
     // get desktop OS list
-    this._data.getDesktopOsList().subscribe(data => this.osList = data);
-    setTimeout(() => {
-      for (let i = 0; i < this.osList.length; i++)
-        this.selectedOs.push({ "desktopOs": this.osList[i].desktopOs });
-      // console.log(this.osList);
-      // console.log(this.selectedOs);
-    }, 1)
+    this._data.getDesktopOsList().subscribe(data => {
+      this.osListDesktop = data;
+      for (let i = 0; i < this.osListDesktop.length; i++) {
+          this.selectedOsDesktop.push({ "desktopOs": this.osListDesktop[i].desktopOs });
+      }
+    });
 
-    // get mobile OS list
-    this._data.getMobileOsList().subscribe(data => this.osList = data);
-    setTimeout(() => {
-      for (let i = 0; i < this.osList.length; i++)
-        this.selectedOs.push({ "mobileOs": this.osList[i].mobileOs });
-      console.log(this.osList);
-      console.log(this.selectedOs);
-    }, 1)
+    // get mobile OS list 
+    
+    this._data.getMobileOsList().subscribe(data => {
+      this.osListMobile = data;
+      for (let i = 0; i < this.osListMobile.length; i++) {
+        this.selectedOsMobile.push({ "mobileOs": this.osListMobile[i].mobileOs });
+      }
+    }); 
 
-  }
+    // Get desktop Browser List
+    this._data.getDesktopBrowserList().subscribe( data => {
+      this.browserListDesktop = data;
+      for(let i = 0; i< this.browserListDesktop.length; i++){
+        this.selectedBrowserDesktop.push(this.browserListDesktop[i].desktopBrowser);
+      }
+    })
+
+    // Get Mobile Browser List
+    this._data.getMobileBrowserList().subscribe(data => {
+      this.browserListMobile = data;
+      for(let i=0; i< this.browserListMobile.length; i++ ){
+        this.selectedBrowserMobile.push(this.browserListMobile[i].mobileBrowser);
+      }
+    })
+
+  }  // *********************** ngOnInit ends here ***********************
 
   addHoursCheckMark(ind) {
     this.hours[ind].select = !this.hours[ind].select;
@@ -77,7 +106,6 @@ export class Test3Component implements OnInit {
       if (this.hours[i].select === true)
         this.selectedHours.push(this.hours[i].hr);
     }
-    console.log(this.selectedHours)
   }
 
   addDeviceCheckMark(ind) {
@@ -100,14 +128,35 @@ export class Test3Component implements OnInit {
     console.log(this.selectedCountries);
   }
 
-  addOsCheckMark(ind) {
-    this.osList[ind].select = !this.osList[ind].select;
-    this.selectedOs = [];
-    for (let i = 0; i < this.osList.length; i++) {
-      if (this.osList[i].select === true)
-        this.selectedOs.push(this.osList[i].desktopOs);
+  addOsCheckMark_dstp(ind) {
+    this.osListDesktop[ind].select = !this.osListDesktop[ind].select;
+    this.selectedOsDesktop = this.updateList(this.selectedOsDesktop, this.osListDesktop);
+  }
+
+  addOsCheckMark_mob(ind){
+    this.osListMobile[ind].select = !this.osListMobile[ind].select;
+    this.selectedOsMobile = this.updateList(this.selectedOsMobile, this.osListMobile);;
+  }
+
+  updateList(arrA, arrB){
+    arrA = [];
+    for (let i = 0; i < arrB.length; i++) {
+      if (arrB[i].select === true)
+      arrA.push(arrB[i].desktopOs);
     }
-    console.log(this.selectedOs);
+    return arrA;    
+  }
+
+  addBrowserCheckMark_dstp(ind){
+    console.log(ind);
+    this.browserListDesktop[ind].select = !this.browserListDesktop[ind].select;
+    this.selectedBrowserDesktop = this.updateList(this.selectedBrowserDesktop, this.browserListDesktop);
+  }
+
+  addBrowserCheckMark_mob(ind){
+    console.log(ind);
+    this.browserListMobile[ind].select = !this.browserListMobile[ind].select;
+    this.selectedBrowserMobile = this.updateList(this.selectedBrowserMobile, this.browserListMobile);;
   }
 
   openHrsListBtnClick() {
@@ -115,6 +164,7 @@ export class Test3Component implements OnInit {
     this.openDeviceList = false;
     this.openCountryList = false;
     this.openOsList = false;
+    this.openBrowserList = false;
   }
 
   openDeviceListBtnClick() {
@@ -122,6 +172,7 @@ export class Test3Component implements OnInit {
     this.openHrsList = false;
     this.openCountryList = false;
     this.openOsList = false;
+    this.openBrowserList = false;
   }
 
   openCountryListBtnClick() {
@@ -129,6 +180,7 @@ export class Test3Component implements OnInit {
     this.openDeviceList = false;
     this.openHrsList = false;
     this.openOsList = false;
+    this.openBrowserList = false;
   }
 
   openOsListBtnClick() {
@@ -136,6 +188,28 @@ export class Test3Component implements OnInit {
     this.openDeviceList = false;
     this.openHrsList = false;
     this.openCountryList = false;
+    this.openBrowserList = false;
   }
 
+  openBrowserListBtnClick(){
+    this.openBrowserList = !this.openBrowserList;
+    this.openDeviceList = false;
+    this.openHrsList = false;
+    this.openCountryList = false;
+    this.openOsList = false;
+  }
+
+  // updateOsList(arrA, arrB){
+  //   this.selectedOs = [];
+  //   for (let i = 0; i < arrA.length; i++) {
+  //     if (arrA[i].select === true)
+  //       this.selectedOs.push(arrA[i].desktopOs);
+  //   }
+  //   for (let i = 0; i < arrB.length; i++) {
+  //     if (arrB[i].select === true)
+  //       this.selectedOs.push(arrB[i].mobileOs);
+  //   }
+  // }
+
 }
+

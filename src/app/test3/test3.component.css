@@ -1,5 +1,6 @@
 ul {
-    list-style: none;
+    list-style-type: none;
+    padding: 2px;
 }
 
 li:hover {
@@ -20,15 +21,25 @@ h6{
     border: none;
     outline: none;
     cursor: pointer;
-    border: 1px solid #333;
+    border: 1px solid #ced4da;
     padding: 6px 0;
     border-radius: 4px;
 }
 
-.multiSelectContainer > div ul{
+.multiSelectContainer > div div{
     position: absolute;
     z-index: 1;
     background-color: #fff;
     left: 0;
-    border: 1px solid #efefef;
+    border: 1px solid #ced4da;
+    max-height: 70vh;
+    overflow: scroll;
+}
+
+.multiSelectContainer > div li i{
+    float: right;
+}
+
+.multiSelectContainer > div li:hover{
+    background-color: lightgray;
 }

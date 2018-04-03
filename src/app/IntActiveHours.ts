@@ -1,1 +1,4 @@
-export interface IActiveHours { }
+export interface IActiveHours {
+    hours: string,
+    select: boolean
+ }

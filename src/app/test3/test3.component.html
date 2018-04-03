@@ -7,7 +7,7 @@
         <div class="row">
           <label for="" class="col-md-3 col-form-label"> Campaign name:</label>
           <div class="col-md-9">
-            <input type="text" class="form-control " name="campName" [(ngModel)]="message">
+            <input type="text" class="form-control " name="campName" [(ngModel)]="campTitle">
           </div>
         </div>
       </div>
@@ -17,12 +17,15 @@
           <div class="col-md-9 multiSelectContainer">
             <button (click)="openCountryListBtnClick()">{{(selectedCountries.length) ? selectedCountries.length + " Selected" : "Nothig Selected"}}</button>
             <div *ngIf="openCountryList" class="col-12">
-              <ul>
-                <li *ngFor="let country of countries;index as i" (click)="addCountryCheckMark(i)">
-                  <strong>{{i}}</strong> {{country.country + ' ind ' + country.select}}
-                  <i class="fa fa-check" *ngIf="country.select"></i>
-                </li>
-              </ul>
+              <div>
+                <button class="btn btn-block">Select All</button>
+                <ul>
+                  <li *ngFor="let country of countries;index as i" (click)="addCountryCheckMark(i)">
+                    <strong>{{i}}</strong> {{country.country}}
+                    <i class="fa fa-check" *ngIf="country.select"></i>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -31,7 +34,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <div class="row">
+        <div class="row form-group">
           <label for="" class="col-md-3 col-form-label">Size:</label>
           <div class="col-md-9">
             <input type="text" class="form-control " name="size" placeholder="Enter file size">
@@ -41,8 +44,19 @@
       <div class="col-md-6">
         <div class="row form-group">
           <label for="" class="col-md-3 col-form-label">Device targeting:</label>
-          <div class="col-md-9">
-            <input type="text" class="form-control " name="deiveTarget">
+          <div class="col-md-9 multiSelectContainer">
+            <button (click)="openDeviceListBtnClick()">{{(selectedDevices.length) ? selectedDevices.length + " Selected" : "Nothig Selected"}}</button>
+            <div *ngIf="openDeviceList" class="col-md-12">
+              <div style="width: 100%">
+                <button class="btn btn-block">Select All</button>
+                <ul>
+                  <li *ngFor="let device of devices;index as i" (click)="addDeviceCheckMark(i)">
+                    <strong>{{i}}</strong> {{device.device}}
+                    <i class="fa fa-check" *ngIf="device.select"></i>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -50,18 +64,49 @@
 
     <div class="row">
       <div class="col-md-6">
-        <div class="row">
+        <div class="row form-group">
           <label for="" class="col-md-3 col-form-label">Active hours:</label>
-          <div class="col-md-9">
-            <input type="text" class="form-control " name="activeHrs">
+          <div class="col-md-9 multiSelectContainer">
+            <button (click)="openHrsListBtnClick()">{{(selectedHours.length) ? selectedHours.length + " Selected" : "Nothing Selected"}}</button>
+            <div *ngIf="openHrsList" class="col-12">
+              <div style="width: 100%">
+                <button class="btn btn-block">Select All</button>
+                <ul>
+                  <li *ngFor="let hour of hours;index as i" (click)="addHoursCheckMark(i)">
+                    <strong>{{i}}</strong> {{hour.hr}}
+                    <i class="fa fa-check" *ngIf="hour.select"></i>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="row form-group">
           <label for="" class="col-md-3 col-form-label">OS targeting:</label>
-          <div class="col-md-9">
-            <input type="text" class="form-control " name="OsTarget">
+          <div class="col-md-9 multiSelectContainer">
+            <button (click)="openOsListBtnClick()">{{ (selectedOsDesktop.length + selectedOsMobile.length) ? (selectedOsDesktop.length + selectedOsMobile.length) + " Selected" : "Nothing Selected" }}</button>
+            <div *ngIf="openOsList" class="col-12">
+              <div style="width: 100%">
+                <button class="btn btn-block">Select All</button>
+                <ul>
+                  <p>Desktop OS</p>
+                  <hr>
+                  <li *ngFor="let os of osListDesktop;index as i" (click)="addOsCheckMark_dstp(i)">
+                    {{ os.desktopOs}}
+                    <i class="fa fa-check" *ngIf="os.select"></i>
+                  </li>
+                  <hr>
+                  <p>Mobile OS</p>
+                  <hr>
+                  <li *ngFor="let os of osListMobile;index as i" (click)="addOsCheckMark_mob(i)">
+                    {{os.mobileOs}}
+                    <i class="fa fa-check" *ngIf="os.select"></i>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -76,11 +121,39 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <!-- <div class="col-md-6">
         <div class="row form-group">
           <label for="" class="col-md-3 col-form-label">Browser targeting:</label>
           <div class="col-md-9">
             <input type="text" class="form-control " name="browserTarget">
+          </div>
+        </div>
+      </div> -->
+      <div class="col-md-6">
+        <div class="row form-group">
+          <label for="" class="col-md-3 col-form-label">Browser targeting:</label>
+          <div class="col-md-9 multiSelectContainer">
+            <button (click)="openBrowserListBtnClick()">{{ (selectedBrowserDesktop.length + selectedBrowserMobile.length) ?  (selectedBrowserDesktop.length + selectedBrowserMobile.length)  + " Selected" : "Nothing Selected" }}</button>
+            <div *ngIf="openBrowserList" class="col-12">
+              <div style="width: 100%">
+                <button class="btn btn-block">Select All</button>
+                <ul>
+                  <p>Desktop Browser</p>
+                  <hr>
+                  <li *ngFor="let browser of browserListDesktop;index as i" (click)="addBrowserCheckMark_dstp(i)">
+                    {{ browser.desktopBrowser}}
+                    <i class="fa fa-check" *ngIf="browser.select"></i>
+                  </li>
+                  <hr>
+                  <p>Mobile Browser</p>
+                  <hr>
+                  <li *ngFor="let browser of browserListMobile;index as i" (click)="addBrowserCheckMark_mob(i)">
+                    {{browser.mobileBrowser}}
+                    <i class="fa fa-check" *ngIf="browser.select"></i>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
