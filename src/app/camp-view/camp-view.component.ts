@@ -99,57 +99,77 @@ export class CampViewComponent implements OnInit {
 
   }  // *********************** ngOnInit ends here ***********************
 
-  private selectAllBtnText: boolean = false;
-  toggleSelectAll(arrayA, selectedArrayA, event, optArrayB, optSelectedArrayB) {
-    if (!this.selectAllBtnText) {
-      for (let i = 0; i < arrayA.length; i++) {
-        arrayA[i].select = false;
-      }
-      selectedArrayA.splice(0, selectedArrayA.length);
-      
-      if(optArrayB){
-        for (let i = 0; i < optArrayB.length; i++) {
-          optArrayB[i].select = false;
-        }
-        optSelectedArrayB.splice(0, optSelectedArrayB.length);
-      }
-      
-      this.selectAllBtnText = !this.selectAllBtnText;
-    } else {
-      for (let i = 0; i < arrayA.length; i++) {
-        arrayA[i].select = true;
-        let first;
-        for (let k in arrayA[i]) {
-          if (arrayA[i].hasOwnProperty(k) && typeof (k) !== 'function') {
-            first = arrayA[i][k];
-            break;
-          }
-        }
-        console.log("first - " + first);
-        selectedArrayA.push(first);
-      }
-      
-      if(optArrayB){
-      for (let i = 0; i < optArrayB.length; i++) {
-        optArrayB[i].select = true;
-        let first;
-        for (let k in optArrayB[i]) {
-          if (optArrayB[i].hasOwnProperty(k) && typeof (k) !== 'function') {
-            first = optArrayB[i][k];
-            break;
-          }
-        }
-        console.log("first - " + first);
-        optSelectedArrayB.push(first);
-      }
-    }
 
-
-
-      this.selectAllBtnText = !this.selectAllBtnText;
-    }
-    console.log(selectedArrayA);
+  selectAllCoutries(){
+    this.selectedCountries = this.selectAll(this.countries, this.selectedCountries);
   }
+
+  deSelectAllCoutries(){
+    this.selectedCountries = this.deSelectAll(this.countries, this.selectedCountries);
+  }
+
+  selectAllDevice(){
+    this.selectedDevices = this.selectAll(this.devices, this.selectedDevices);
+  }
+
+  deSelectAllDevice(){
+    this.selectedDevices = this.deSelectAll(this.devices, this.selectedDevices);
+  }
+
+  selectAllhours(){
+    this.selectedHours = this.selectAll(this.hours, this.selectedHours);
+  }
+
+  deSelectAllhours(){
+    this.selectedHours = this.deSelectAll(this.hours, this.selectedHours);
+  }
+
+  selectAllOs(){
+    this.selectedOsDesktop = this.selectAll(this.osListDesktop, this.selectedOsDesktop);
+    this.selectedOsMobile = this.selectAll(this.osListMobile, this.selectedOsMobile);
+  }
+
+  deSelectAllOs(){
+    this.selectedOsDesktop = this.deSelectAll(this.osListDesktop, this.selectedOsDesktop);
+    this.selectedOsMobile = this.deSelectAll(this.osListMobile, this.selectedOsMobile);
+  }
+
+  selectAllBrowser(){
+    this.selectedBrowserDesktop = this.selectAll(this.browserListDesktop, this.selectedBrowserDesktop);
+    this.selectedBrowserMobile = this.selectAll(this.browserListMobile, this.selectedBrowserMobile);
+  }
+
+  deSelectAllBrowser(){
+    this.selectedBrowserDesktop = this.deSelectAll(this.browserListDesktop, this.selectedBrowserDesktop);
+    this.selectedBrowserMobile = this.deSelectAll(this.browserListMobile, this.selectedBrowserMobile);
+  }
+
+  selectAll(array, selectedArray) {
+    selectedArray = [];
+    for (let i = 0; i < array.length; i++) {
+      array[i].select = true;    // set select = true.
+  // update selected array list
+      let first;
+      for (let k in array[i]) {
+        if (array[i].hasOwnProperty(k) && typeof (k) !== 'function') {
+          first = array[i][k];
+          break;
+        }
+      }
+      selectedArray.push(first);
+    }
+
+    console.log(selectedArray);
+    return selectedArray;
+  }
+
+  deSelectAll(array, selectedArray){
+    selectedArray = [];
+    for (let i = 0; i < array.length; i++) 
+      array[i].select = false;    // set select = false.
+      return selectedArray;
+  }
+
 
   addHoursCheckMark(ind) {
     this.hours[ind].select = !this.hours[ind].select;
@@ -158,7 +178,7 @@ export class CampViewComponent implements OnInit {
       if (this.hours[i].select === true)
         this.selectedHours.push(this.hours[i].hr);
     }
-    console.log(this.selectedHours);
+    // console.log(this.selectedHours);
   }
 
   addDeviceCheckMark(ind) {

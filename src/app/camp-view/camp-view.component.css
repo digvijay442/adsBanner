@@ -26,12 +26,16 @@ h6{
     border-radius: 4px;
 }
 
-.multiSelectContainer > div div{
+.multiSelectContainer > div > div{
     position: absolute;
     z-index: 1;
     background-color: #fff;
     left: 0;
     border: 1px solid #ced4da;
+    /* max-height: 70vh; */
+    /* overflow: scroll; */
+}
+.multiSelectContainer > div > div ul{
     max-height: 70vh;
     overflow: scroll;
 }
@@ -42,4 +46,8 @@ h6{
 
 .multiSelectContainer > div li:hover{
     background-color: lightgray;
+}
+
+.alignCenter {
+    text-align: center;
 }
