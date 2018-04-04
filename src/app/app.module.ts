@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -14,6 +16,7 @@ import { DataService } from './data.service';
 import { TestComponent } from './test/test.component';
 import { Test2Component } from './test2/test2.component';
 import { Test3Component } from './test3/test3.component';
+import { BannerComponent } from './banner/banner.component';
 
 
 @NgModule({
@@ -25,6 +28,8 @@ import { Test3Component } from './test3/test3.component';
     TestComponent,
     Test2Component,
     Test3Component,
+    FileSelectDirective,
+    BannerComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,8 @@ import { Test3Component } from './test3/test3.component';
     FormsModule,
     ReactiveFormsModule ,
     HttpClientModule,    // no need to refister explicitly, HttpClientModule do it
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpModule
   ],
   providers: [DataService],   // Register Data service
   bootstrap: [AppComponent]

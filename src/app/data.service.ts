@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HttpClient } from '@angular/common/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { IActiveHours } from './IntActiveHours';
 import { Observable } from 'rxjs/Observable';
 import { IDummyActiveHours } from './IntActiveHours.1';
@@ -10,6 +11,9 @@ import { IMobileOs } from './intMobileOs';
 import { IMobileBrowser } from './intMobileBrowser';
 import { IDesktopOs } from './intDesktopOs';
 import { IDesktopBrowser } from './intDesktopBrowser';
+import { IVideoTest } from './intVedioTest';
+import { Options } from 'selenium-webdriver';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DataService {
@@ -24,16 +28,26 @@ export class DataService {
   private _urlMobileBrowserLIst : string = "assets/data/mobileBrowser.json";
   private _urlDesktopOsLIst : string = "assets/data/desktopOs.json";
   private _urlDesktopBrowserLIst : string = "assets/data/desktopBrowser.json";
+  private _postUrlPhotoUpload = "http://localhost:3000/api/photo/";
+  private _postUrlTest = "http://localhost:3000/api/videos/";
 
   // declare HttpClientModule as dependency
-  constructor(private http: HttpClient) { }
+  constructor(private httpClient: HttpClient, private http: Http) { }
+
+  addVideoTest( video: IVideoTest){
+    console.log('addVideoTest from data service invoked.');
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this._postUrlTest, JSON.stringify(video), options)
+                          .map((response : Response) => response.json())
+  }
 
   changeMessage(message: string) {
     this.campTitle.next(message);
   }
 
   getHours(): Observable<IActiveHours[]>{
-    return this.http.get<IActiveHours[]>(this._urlActiveHours);
+    return this.httpClient.get<IActiveHours[]>(this._urlActiveHours);
   }
 
   // getDummyHours(): Observable<IDummyActiveHours[]>{
@@ -41,27 +55,27 @@ export class DataService {
   // }
 
   getDeviceList(): Observable<IDevice[]>{
-    return this.http.get<IDevice[]>(this._urlDeviceLIst);
+    return this.httpClient.get<IDevice[]>(this._urlDeviceLIst);
   }
 
   getCountryList(): Observable<ICountry[]>{
-    return this.http.get<ICountry[]>(this._urlCountryLIst);
+    return this.httpClient.get<ICountry[]>(this._urlCountryLIst);
     }
 
   getMobileOsList(): Observable<IMobileOs[]>{
-    return this.http.get<IMobileOs[]>(this._urlMobileOsLIst);
+    return this.httpClient.get<IMobileOs[]>(this._urlMobileOsLIst);
   }
 
   getMobileBrowserList(): Observable<IMobileBrowser[]>{
-    return this.http.get<IMobileBrowser[]>(this._urlMobileBrowserLIst);
+    return this.httpClient.get<IMobileBrowser[]>(this._urlMobileBrowserLIst);
   }
 
   getDesktopOsList(): Observable<IDesktopOs[]>{
-    return this.http.get<IDesktopOs[]>(this._urlDesktopOsLIst);
+    return this.httpClient.get<IDesktopOs[]>(this._urlDesktopOsLIst);
   }
 
   getDesktopBrowserList(): Observable<IDesktopBrowser[]>{
-    return this.http.get<IDesktopBrowser[]>(this._urlDesktopBrowserLIst);
+    return this.httpClient.get<IDesktopBrowser[]>(this._urlDesktopBrowserLIst);
   }
 
 }

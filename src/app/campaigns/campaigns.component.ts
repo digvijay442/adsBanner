@@ -21,7 +21,7 @@ export class CampaignsComponent implements OnInit {
   campView(){
     this.data.changeMessage(this.newCampInput);
     // this.router.navigate(['camp-view'], { queryParams: { newCampaign: this.newCampInput } });
-    this.router.navigate(['test3']);
+    this.router.navigate(['camp-view']);
   }
 
   newMessage(){

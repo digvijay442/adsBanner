@@ -1,5 +1,45 @@
-.setPadding {
-    /* padding: 10px; */
+ul {
+    list-style-type: none;
+    padding: 2px;
 }
 
+li:hover {
+cursor: pointer;
+}
 
+h6{
+    background-color: #9e9e9e33;
+    padding: 10px;
+}
+
+.multiSelectContainer {
+    position: relative;
+}
+.multiSelectContainer > button {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #ced4da;
+    padding: 6px 0;
+    border-radius: 4px;
+}
+
+.multiSelectContainer > div div{
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+    left: 0;
+    border: 1px solid #ced4da;
+    max-height: 70vh;
+    overflow: scroll;
+}
+
+.multiSelectContainer > div li i{
+    float: right;
+}
+
+.multiSelectContainer > div li:hover{
+    background-color: lightgray;
+}

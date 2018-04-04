@@ -10,3 +10,7 @@
 .align-center {
     text-align: center;
 }
+
+.progress {
+    height: 3px;
+}

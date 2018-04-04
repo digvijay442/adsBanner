@@ -8,15 +8,11 @@ var storage =   multer.diskStorage({
     callback(null, './uploads');
   },
   filename: function (req, file, callback) {
-    // console.log("------------------------req-----------------------");
-    // console.log(file);
-    // console.log("------------------------file-----------------------");
-    // console.log(file);
-    // callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    callback(null, file.originalname);
+    // callback(null, file.fieldname + file.originalname + '-' + Date.now() + path.extname(file.originalname));
+    callback(null, file.fieldname + '-' + Date.now() + file.originalname);
   }
 });
-var upload = multer({ storage : storage }).array('userPhoto',2);
+var upload = multer({ storage : storage }).array('photo',20);
 
 router.post('/api/photo',function(req,res){
   upload(req,res,function(err) {
