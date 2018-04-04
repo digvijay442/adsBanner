@@ -13,9 +13,7 @@ import { DefaultComponent } from './default/default.component';
 import { CampaignsComponent } from './campaigns/campaigns.component';
 import { CampViewComponent } from './camp-view/camp-view.component';
 import { DataService } from './data.service';
-import { TestComponent } from './test/test.component';
-import { Test2Component } from './test2/test2.component';
-import { Test3Component } from './test3/test3.component';
+import { Test3Component } from './test/test3.component';
 import { BannerComponent } from './banner/banner.component';
 
 
@@ -25,8 +23,6 @@ import { BannerComponent } from './banner/banner.component';
     DefaultComponent,
     CampaignsComponent,
     CampViewComponent,
-    TestComponent,
-    Test2Component,
     Test3Component,
     FileSelectDirective,
     BannerComponent

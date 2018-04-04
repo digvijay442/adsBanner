@@ -18,10 +18,10 @@
             <button (click)="openCountryListBtnClick()">{{(selectedCountries.length) ? selectedCountries.length + " Selected" : "Nothig Selected"}}</button>
             <div *ngIf="openCountryList" class="col-12">
               <div>
-                <button class="btn btn-block">Select All</button>
+                <button class="btn btn-block" (click)="toggleSelectAll(countries, selectedCountries, $event.target.textContent,null, null)">{{ (selectAllBtnText) ? 'Select All' : 'Deselect All'}}</button>
                 <ul>
                   <li *ngFor="let country of countries;index as i" (click)="addCountryCheckMark(i)">
-                    <strong>{{i}}</strong> {{country.country}}
+                    {{country.country}}
                     <i class="fa fa-check" *ngIf="country.select"></i>
                   </li>
                 </ul>
@@ -48,10 +48,10 @@
             <button (click)="openDeviceListBtnClick()">{{(selectedDevices.length) ? selectedDevices.length + " Selected" : "Nothig Selected"}}</button>
             <div *ngIf="openDeviceList" class="col-md-12">
               <div style="width: 100%">
-                <button class="btn btn-block">Select All</button>
+                <button class="btn btn-block" (click)="toggleSelectAll(devices, selectedDevices, $event.target.textContent, null, null)">{{ (selectAllBtnText) ? 'Select All' : 'Deselect All'}}</button>
                 <ul>
                   <li *ngFor="let device of devices;index as i" (click)="addDeviceCheckMark(i)">
-                    <strong>{{i}}</strong> {{device.device}}
+                    {{device.device}}
                     <i class="fa fa-check" *ngIf="device.select"></i>
                   </li>
                 </ul>
@@ -70,10 +70,10 @@
             <button (click)="openHrsListBtnClick()">{{(selectedHours.length) ? selectedHours.length + " Selected" : "Nothing Selected"}}</button>
             <div *ngIf="openHrsList" class="col-12">
               <div style="width: 100%">
-                <button class="btn btn-block">Select All</button>
+                  <button class="btn btn-block" (click)="toggleSelectAll(hours, selectedHours, $event.target.textContent, null, null)">{{ (selectAllBtnText) ? 'Select All' : 'Deselect All'}}</button>
                 <ul>
                   <li *ngFor="let hour of hours;index as i" (click)="addHoursCheckMark(i)">
-                    <strong>{{i}}</strong> {{hour.hr}}
+                    {{hour.hr}}
                     <i class="fa fa-check" *ngIf="hour.select"></i>
                   </li>
                 </ul>
@@ -86,10 +86,11 @@
         <div class="row form-group">
           <label for="" class="col-md-3 col-form-label">OS targeting:</label>
           <div class="col-md-9 multiSelectContainer">
-            <button (click)="openOsListBtnClick()">{{ (selectedOsDesktop.length + selectedOsMobile.length) ? (selectedOsDesktop.length + selectedOsMobile.length) + " Selected" : "Nothing Selected" }}</button>
+            <button (click)="openOsListBtnClick()">{{ (selectedOsDesktop.length + selectedOsMobile.length) ? (selectedOsDesktop.length + selectedOsMobile.length)
+              + " Selected" : "Nothing Selected" }}</button>
             <div *ngIf="openOsList" class="col-12">
               <div style="width: 100%">
-                <button class="btn btn-block">Select All</button>
+                  <button class="btn btn-block" (click)="toggleSelectAll(osListDesktop,selectedOsDesktop, $event.target.textContent, osListMobile, selectedOsMobile)">{{ (selectAllBtnText) ? 'Select All' : 'Deselect All'}}</button>
                 <ul>
                   <p>Desktop OS</p>
                   <hr>
@@ -133,10 +134,11 @@
         <div class="row form-group">
           <label for="" class="col-md-3 col-form-label">Browser targeting:</label>
           <div class="col-md-9 multiSelectContainer">
-            <button (click)="openBrowserListBtnClick()">{{ (selectedBrowserDesktop.length + selectedBrowserMobile.length) ?  (selectedBrowserDesktop.length + selectedBrowserMobile.length)  + " Selected" : "Nothing Selected" }}</button>
+            <button (click)="openBrowserListBtnClick()">{{ (selectedBrowserDesktop.length + selectedBrowserMobile.length) ? (selectedBrowserDesktop.length + selectedBrowserMobile.length)
+              + " Selected" : "Nothing Selected" }}</button>
             <div *ngIf="openBrowserList" class="col-12">
               <div style="width: 100%">
-                <button class="btn btn-block">Select All</button>
+                  <button class="btn btn-block" (click)="toggleSelectAll(browserListDesktop, selectedBrowserDesktop, $event.target.textContent, browserListMobile, selectedBrowserMobile )">{{ (selectAllBtnText) ? 'Select All' : 'Deselect All'}}</button>
                 <ul>
                   <p>Desktop Browser</p>
                   <hr>
